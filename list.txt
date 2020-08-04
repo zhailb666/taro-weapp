@@ -1,0 +1,22 @@
+taro-weapp
+├─README.md
+├─babel.config.js
+├─global.d.ts
+├─list.txt
+├─package-lock.json
+├─package.json
+├─project.config.json
+├─tsconfig.json
+├─yarn-error.log
+├─yarn.lock
+├─src
+|  ├─app.config.ts
+|  ├─app.scss
+|  ├─app.tsx
+|  ├─index.html
+|  ├─store
+|  |   └counter.ts
+├─config
+|   ├─dev.js
+|   ├─index.js
+|   └prod.js
