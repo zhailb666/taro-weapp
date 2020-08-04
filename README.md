@@ -9,6 +9,7 @@
 
 # 2. 整体结构搭建
 
+```
 taro-weapp
 ├── dist                  编译结果目录
 ├─README.md               
@@ -30,7 +31,7 @@ taro-weapp
 |   ├── dev.js             开发时配置
 |   ├── index.js           默认配置
 |   └── prod.js            打包时配置
-
+```
 
 # 3. 项目开发
 
