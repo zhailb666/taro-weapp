@@ -22,10 +22,13 @@ taro-weapp
 ├─yarn.lock
 ├── src                    源码目录
 |   ├── pages              页面文件目录
-|   |   ├ index            index 页面目录
+|   |   ├ index            index 页面目录 // test store
 |   |   |   ├── index.js   index 页面逻辑
 |   |   |   └── index.scss index 页面样式
-|   ├── app.scss           项目总通用样式
+|   ├—— utils
+|   |   ├─request.ts       请求库 
+|   |   └router.ts         路由跳转库
+|   ├── app.scss           项目总通用样式、改变taro-ui的主题颜色  
 |   └── app.js             项目入口文件
 ├── config                 配置目录
 |   ├── dev.js             开发时配置
@@ -54,6 +57,9 @@ taro-weapp
 - 生成目录结构命令 treer -i "/.git|node_modules|dist|pages|.vscode|(^\.)/" /f>list.txt
 
 
+## 新增的依赖项
+- taro-ui
+- qs
 
 
 

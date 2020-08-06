@@ -14,8 +14,13 @@ taro-weapp
 |  ├─app.scss
 |  ├─app.tsx
 |  ├─index.html
+|  ├─utils
+|  |   ├─request.ts
+|  |   └router.ts
 |  ├─store
-|  |   └counter.ts
+|  |   ├─counter-class.ts
+|  |   ├─counter.ts
+|  |   └index.ts
 ├─config
 |   ├─dev.js
 |   ├─index.js

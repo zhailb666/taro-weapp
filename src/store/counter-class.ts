@@ -4,10 +4,12 @@ export default class CounterClassStore {
 
   @observable counter: number = 0; // Observable 值可以是JS基本数据类型、引用类型、普通对象、类实例、数组和映射
 
+  @action.bound
   counterStore() {
     this.counter++
   }
 
+  @action.bound
   increment() {
     this.counter++
   }
@@ -17,15 +19,17 @@ export default class CounterClassStore {
     this.counter = this.counter + 2
   }
 
-  @action('incrementThree')
+  @action('incrementThree') // error: name无效
   incrementThr = () => {
     this.counter = this.counter + 2
   }
 
+  @action.bound
   decrement() {
     this.counter--
   }
 
+  @action.bound
   incrementAsync() {
     setTimeout(() => {
       this.counter++
@@ -33,7 +37,7 @@ export default class CounterClassStore {
   }
 
   @computed //产生一个新值 计算值(computed values)是可以根据现有的状态或其它计算值衍生出的值。 概念上来说，它们与excel表格中的公式十分相似
-  get counterMoney() {
+  get yuanMoney() {
     return `${this.counter}¥`;
   }
 }
@@ -78,4 +82,14 @@ observer(class MyComponent extends React.Component { ... })
 /**
  * 何时使用动作？
    应该永远只对修改状态的函数使用动作。 只执行查找，过滤器等函数不应该被标记为动作，以允许 MobX 跟踪它们的调用。
+   action: 创建一个动作, 参见 action
+   action(name): 创建一个动作，重载了名称
+   action.bound: 创建一个动作, 并将 this 绑定到了实例
+ */
+
+
+/**
+runInAction(name?, thunk)
+runInAction 是个简单的工具函数，它接收代码块并在(异步的)动作中执行。
+这对于即时创建和执行动作非常有用，例如在异步过程中。runInAction(f) 是 action(f)() 的语法糖。 
  */
