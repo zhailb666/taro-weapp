@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'mobx-react'
-
-import counterStore from './store/counter'
-
+import store from './store'
 import './app.scss'
-
-const store = {
-  counterStore
-}
 
 class App extends Component {
   componentDidMount () {}

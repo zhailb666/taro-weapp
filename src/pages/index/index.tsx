@@ -48,6 +48,7 @@ class Index extends Component {
   }
 
   render () {
+    console.log(this.props.store, 'store')
     const { counterStore: { counter } } = this.props.store
     return (
       <View className='index'>
