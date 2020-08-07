@@ -3,40 +3,36 @@ import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from 'mobx-react'
 
 import './index.scss'
+import { StoreType } from 'src/store'
 
 type PageStateProps = {
-  store: {
-    counterStore: {
-      counter: number,
-      increment: Function,
-      decrement: Function,
-      incrementAsync: Function
-    },
-    counterClassStore: {
-      counter: number,
-      increment: Function,
-      decrement: Function,
-      incrementAsync: Function
-    }
-  }
+  store: StoreType
 }
 
 interface Index {
   props: PageStateProps;
 }
 
-@inject('store')
+@inject('store') // {/*❓2*/}
 @observer
 class Index extends Component {
+  index = 1;
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () {
+    const { counterStore } = this.props.store
+    console.log('测试页面渲染完成');
+   }
 
   componentWillUnmount () { }
 
   componentDidShow () { }
 
   componentDidHide () { }
+
+  // shouldComponentUpdate(nextProps, nextState) {  //{/*❓3*/}
+  //   debugger
+  //  }
 
   increment = () => {
     const { counterStore } = this.props.store
@@ -74,8 +70,10 @@ class Index extends Component {
   }
 
   render () {
-    console.log(this.props.store, 'store')
-    const { counterStore: { counter }, counterClassStore } = this.props.store
+    this.index = this.index + 1
+    console.log(`${this.index}渲染次数`,this.props.store, 'store')
+    const { counterStore: { counter }, counterClassStore, counterStoreT} = this.props.store
+    console.log(counterStoreT.counter, '测试taro的render机制') //❓1
     return (
       <View className='index'>
         <Button onClick={this.increment}>+</Button>
@@ -87,8 +85,9 @@ class Index extends Component {
         <Button onClick={this.incrementClassPlusTwo}>+2</Button>
         <Button onClick={this.decrementClass}>-</Button>
         <Button onClick={this.incrementAsyncClass}>Add Async</Button>
-        <Text>{counterClassStore.counter || 0}</Text>
-        <Text>{counterClassStore.yuanMoney || 0}</Text>
+        <View>{counterClassStore.counter || 0}</View>
+        <View>{counterClassStore.yuanMoney || 0}</View>
+        <View>{counterStoreT.counter || 0}</View> {/*❓1*/}
       </View>
     )
   }

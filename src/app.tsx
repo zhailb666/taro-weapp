@@ -4,11 +4,30 @@ import store from './store'
 import './app.scss'
 
 class App extends Component {
-  componentDidMount () {}
+  times = 1;
+  publish = () => {
+    setTimeout(() => {
+      console.log('dddd---setTimeout')
+      this.times = this.times + 1;
+      if(this.times < 10 ) {
+        store.counterStoreT.increment()
+        this.publish()
+      }
+    }, 1000);
+  }
 
-  componentDidShow () {}
+  componentDidMount () {
+    console.log('----app渲染完成-----')
+    this.publish()
+  }
 
-  componentDidHide () {}
+  componentDidShow () {
+    console.log('----app---componentDidShow-----')
+  }
+
+  componentDidHide () {
+    console.log('----app---componentDidHide-----')
+  }
 
   componentDidCatchError () {}
 

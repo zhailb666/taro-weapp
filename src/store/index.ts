@@ -1,10 +1,12 @@
-import counter from './counter'
+import counter, { counterStoreT }  from './counter'
 import CounterClass from './counter-class'
 
-const store = {
+const Store = {
     counterStore: counter,
+    counterStoreT,
     counterClassStore: new CounterClass(),
 }
 
+export type StoreType = typeof Store;
 
-export default store;
+export default Store;
