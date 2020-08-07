@@ -14,7 +14,7 @@ interface Index {
 }
 
 @inject('store') // {/*❓2*/}
-@observer
+@observer // {/*❓4*/}
 class Index extends Component {
   index = 1;
   componentWillMount () { }
